@@ -365,6 +365,10 @@
             });
           },
 
+          getCurrentUserPlaylists: function (options) {
+            return this.api('/me/playlists/', 'GET', options, null, this._auth());
+          },
+
           getPlaylist: function (userId, playlistId, options) {
             return this.api('/users/' + userId + '/playlists/' + playlistId, 'GET', options, null, this._auth());
           },
@@ -484,6 +488,10 @@
             }, null, this._auth());
           },
 
+          getTrackAudioAnalysis: function (track) {
+            track = track.indexOf('spotify:') === -1 ? track : track.split(':')[2];
+            return this.api('/audio-analysis/' + track, 'GET', null, null, this._auth());
+          },          
 
           /**
             ====================== Login =====================
